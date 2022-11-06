@@ -22,7 +22,7 @@ export default function App() {
             <article className="card">
                 <img src="./images/user.png" className="card--image" />
                 <div className="card--info">
-                    <Star isFilled={contact.isFavorite} handleClick={toggleFavorite}/>
+                    <Star isFilled={contact.isFavorite} handleClick={toggleFavorite}/>//isFilled add handleClick passed to Star component as a props
                     <h2 className="card--name">
                         {contact.firstName} {contact.lastName}
                     </h2>
