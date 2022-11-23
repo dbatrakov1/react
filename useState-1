@@ -1,0 +1,34 @@
+ //add data to a privateData
+ 
+ const [privateData, setPrivateData] = useState("");
+
+  useEffect(() =>{
+  //*************************************************AUTH PART TO GET ACCESS TO AN API***********************************
+    if (!localStorage.getItem("authToken")) {
+          history.push("/login");
+        }
+    const fetchPrivateDate = async () => {
+          const config = {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+          };
+//**********************************************************************************************************************
+
+      try {
+        const {data}  = await axios.get("/api/private", config);//**************GOT ARRY OF OBJECTS  ********************
+//**************************STRINGIFY EVERY OBJECT OF AN  ARRY AND ADD IT TO A privateData*******************************
+        data.forEach(element =>{
+          setPrivateData(prevArray =>{
+            return [...prevArray, JSON.stringify(element)]
+          })
+      }) 
+//************************************************************************************************************************
+      } catch (error) {
+        localStorage.removeItem("authToken");
+        setError("You are not authorized please login");
+      }
+    };
+    fetchPrivateDate();
+  },[history])
