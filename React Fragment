@@ -1,0 +1,1 @@
+ <> is the shorthand tag for React.Fragment which allows us to group a list of elements without wrapping them in a new node. The only difference between them is that the shorthand version does not support the key attribute.
