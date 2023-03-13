@@ -6,6 +6,8 @@ import Info from "./Info"
 
 function Profile() {
     const {path, url} = useRouteMatch()
+    //If it is provided with no arguments, it returns the closest match in the component or its parents.
+    //A primary use case would be to construct nested paths.
     
     // {
     //     path: "/user", 
